@@ -1,84 +1,95 @@
 import SwiftUI
+import FirebaseAuth
 
 struct MainView: View {
-    @Environment(\.managedObjectContext) private var viewContext
-
-    @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \GoalEntity.createdAt, ascending: false)],
-        animation: .default
-    )
-    private var goals: FetchedResults<GoalEntity>
+    @StateObject var viewModel = MainViewModel()
+    @State private var showCreateGoal = false
+    @State private var selectedGoal: Goal?
+    @State private var isNavigating = false
+    @EnvironmentObject var appState: AppState
 
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack {
-                if goals.isEmpty {
+                if viewModel.goals.isEmpty {
+                    Spacer()
                     VStack(spacing: 12) {
-                        Text("No goals yet.")
+                        Image(systemName: "hourglass")
+                            .font(.system(size: 48))
+                            .foregroundColor(.gray)
+                        Text("No goals yet")
                             .font(.headline)
                             .foregroundColor(.gray)
-
-                        NavigationLink(destination: CreatedGoalView()) {
-                            Text("Create Your First Goal")
-                                .padding()
-                                .background(Color.black)
-                                .foregroundColor(.white)
-                                .cornerRadius(10)
-                        }
                     }
+                    Spacer()
                 } else {
                     List {
-                        ForEach(goals) { goal in
-                            NavigationLink {
-                                TimerView(goal: goal, context: viewContext)
-                            } label: {
-                                GoalCardView(goal: goal)
+                        ForEach(viewModel.goals, id: \.id) { goal in
+                            GoalCardView(goal: goal)
+                                .onTapGesture {
+                                    appState.currentRoute = .timer(goal: goal)
+                                }
+                                .contextMenu {
+                                    Button("Edit") {
+                                        selectedGoal = goal
+                                    }
+                                    Button("Delete", role: .destructive) {
+                                        viewModel.deleteGoal(goal)
+                                    }
+                                }
+                        }
+                        .onDelete { indexSet in
+                            for index in indexSet {
+                                let goalToDelete = viewModel.goals[index]
+                                viewModel.deleteGoal(goalToDelete)
                             }
                         }
-                        .onDelete(perform: deleteGoal)
+                        .listRowSeparator(.hidden)
                     }
 
-                    .listStyle(PlainListStyle())
+                    .listStyle(.plain)
                 }
 
-                Spacer()
-
-                NavigationLink(destination: CreatedGoalView()) {
-                    HStack {
-                        Image(systemName: "plus.circle.fill")
-                        Text("New Goal")
-                    }
-                    .font(.headline)
-                    .padding()
-                    .foregroundColor(.white)
-                    .background(Color.black)
-                    .cornerRadius(12)
+                Button(action: {
+                    showCreateGoal = true
+                }) {
+                    Text("New Goal")
+                        .font(.headline)
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .background(Color.blue)
+                        .foregroundColor(.white)
+                        .cornerRadius(12)
+                        .padding(.horizontal)
                 }
-                .padding(.bottom)
+                .padding(.bottom, 16)
             }
-            .padding(.horizontal)
-            .navigationTitle("Your Goals")
+            .sheet(isPresented: $showCreateGoal, onDismiss: {
+                viewModel.fetchGoals()
+            }) {
+                CreateGoalView(
+                    navigationGoal: $selectedGoal,
+                    isPresented: $showCreateGoal,
+                    listViewModel: viewModel
+                )
+                .environmentObject(appState)
+            }
+            .sheet(item: $selectedGoal) { goal in
+                EditGoalView(goal: goal, isPresented: .constant(true), listViewModel: viewModel)
+            }
+            .navigationTitle("Goals") // ✅ Başlık
+            .navigationBarTitleDisplayMode(.large) // ✅ Büyük başlık görünümü
+            .onAppear {
+                print("✅ MainView görünür oldu, fetchGoals tetikleniyor")
+                viewModel.fetchGoals()
+            }
+
         }
-    }
-
-    private func deleteGoal(at offsets: IndexSet) {
-        offsets.map { goals[$0] }.forEach(viewContext.delete)
-        try? viewContext.save()
-    }
-}
-#Preview {
-    let context = PersistenceController.preview.container.viewContext
+        }
     
-    // Örnek GoalEntity oluştur
-    let exampleGoal = GoalEntity(context: context)
-    exampleGoal.title = "Read 30 Pages"
-    exampleGoal.targetMinutes = 120
-    exampleGoal.completedMinutes = 45
-    exampleGoal.createdAt = Date()
+}
 
-    // Veriyi kaydet (önizleme için gerekli değil ama hata çıkmasın diye)
-    try? context.save()
-
-    return MainView()
-        .environment(\.managedObjectContext, context)
+#Preview {
+    MainView()
+        .environmentObject(AppState())
 }

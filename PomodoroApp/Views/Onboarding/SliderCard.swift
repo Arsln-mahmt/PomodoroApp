@@ -17,7 +17,9 @@ struct SliderCard: View {
                 .resizable()
                 .scaledToFit()
                 .frame(height: imageHeight)
-                .foregroundColor(.black)
+                .foregroundColor(.blue)
+                .padding(.bottom, 32)
+            
             
             Text(model.title)
                 .font(.title)

@@ -6,6 +6,16 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		0C70D22D2DDB5EE500F52617 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 0C70D22C2DDB5EE500F52617 /* GoogleSignIn */; };
+		0C70D22F2DDB5EE500F52617 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0C70D22E2DDB5EE500F52617 /* GoogleSignInSwift */; };
+		0C73054A2DD29F00002F3FBA /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 0C7305492DD29F00002F3FBA /* Lottie */; };
+		0CA141DC2DCC1766005B771A /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 0CA141DB2DCC1766005B771A /* FirebaseAnalytics */; };
+		0CA141DE2DCC1766005B771A /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 0CA141DD2DCC1766005B771A /* FirebaseAuth */; };
+		0CA141E02DCC1766005B771A /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 0CA141DF2DCC1766005B771A /* FirebaseFirestore */; };
+		0CA141E22DCC1766005B771A /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 0CA141E12DCC1766005B771A /* FirebaseStorage */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		0C96DBAF2DB2DD840009E2EF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -33,6 +43,7 @@
 		0C96DBEB2DB2E2990009E2EF /* Exceptions for "PomodoroApp" folder in "PomodoroApp" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				Info.plist,
 				Tests/UI/PomodoroAppUITests.swift,
 				Tests/UI/PomodoroAppUITestsLaunchTests.swift,
 				Tests/Unit/PomodoroAppTests.swift,
@@ -84,6 +95,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C73054A2DD29F00002F3FBA /* Lottie in Frameworks */,
+				0CA141DC2DCC1766005B771A /* FirebaseAnalytics in Frameworks */,
+				0C70D22F2DDB5EE500F52617 /* GoogleSignInSwift in Frameworks */,
+				0CA141E22DCC1766005B771A /* FirebaseStorage in Frameworks */,
+				0CA141DE2DCC1766005B771A /* FirebaseAuth in Frameworks */,
+				0CA141E02DCC1766005B771A /* FirebaseFirestore in Frameworks */,
+				0C70D22D2DDB5EE500F52617 /* GoogleSignIn in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -144,6 +162,13 @@
 			);
 			name = PomodoroApp;
 			packageProductDependencies = (
+				0CA141DB2DCC1766005B771A /* FirebaseAnalytics */,
+				0CA141DD2DCC1766005B771A /* FirebaseAuth */,
+				0CA141DF2DCC1766005B771A /* FirebaseFirestore */,
+				0CA141E12DCC1766005B771A /* FirebaseStorage */,
+				0C7305492DD29F00002F3FBA /* Lottie */,
+				0C70D22C2DDB5EE500F52617 /* GoogleSignIn */,
+				0C70D22E2DDB5EE500F52617 /* GoogleSignInSwift */,
 			);
 			productName = PomodoroApp;
 			productReference = 0C96DB992DB2DD830009E2EF /* PomodoroApp.app */;
@@ -224,9 +249,15 @@
 			knownRegions = (
 				en,
 				Base,
+				tr,
 			);
 			mainGroup = 0C96DB902DB2DD830009E2EF;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				0CA141DA2DCC1766005B771A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				0C7305482DD29F00002F3FBA /* XCRemoteSwiftPackageReference "lottie-spm" */,
+				0C70D22B2DDB5EE500F52617 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 0C96DB9A2DB2DD830009E2EF /* Products */;
 			projectDirPath = "";
@@ -425,17 +456,20 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PomodoroApp/Preview Content\"";
 				DEVELOPMENT_TEAM = 897X57G65R;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PomodoroApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -454,17 +488,20 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PomodoroApp/Preview Content\"";
 				DEVELOPMENT_TEAM = 897X57G65R;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PomodoroApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -590,6 +627,71 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		0C70D22B2DDB5EE500F52617 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/GoogleSignIn-iOS.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.0.0;
+			};
+		};
+		0C7305482DD29F00002F3FBA /* XCRemoteSwiftPackageReference "lottie-spm" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-spm.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.5.1;
+			};
+		};
+		0CA141DA2DCC1766005B771A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.12.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0C70D22C2DDB5EE500F52617 /* GoogleSignIn */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0C70D22B2DDB5EE500F52617 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignIn;
+		};
+		0C70D22E2DDB5EE500F52617 /* GoogleSignInSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0C70D22B2DDB5EE500F52617 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignInSwift;
+		};
+		0C7305492DD29F00002F3FBA /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0C7305482DD29F00002F3FBA /* XCRemoteSwiftPackageReference "lottie-spm" */;
+			productName = Lottie;
+		};
+		0CA141DB2DCC1766005B771A /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0CA141DA2DCC1766005B771A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		0CA141DD2DCC1766005B771A /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0CA141DA2DCC1766005B771A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		0CA141DF2DCC1766005B771A /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0CA141DA2DCC1766005B771A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		0CA141E12DCC1766005B771A /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0CA141DA2DCC1766005B771A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 0C96DB912DB2DD830009E2EF /* Project object */;
 }
