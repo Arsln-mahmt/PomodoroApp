@@ -20,7 +20,7 @@ struct GoalCardView: View {
             // Session bilgisi
             Text("Session \(min(goal.completedSessions + 1, goal.totalSessions))/\(goal.totalSessions)")
                 .font(.caption)
-            .foregroundColor(Color(hex: goal.colorHex).contrastingForeground.opacity(0.7))
+                .foregroundColor(Color(hex: goal.colorHex).contrastingForeground.opacity(0.7))
         }
         .padding()
         .background(Color(hex: goal.colorHex))
@@ -36,11 +36,13 @@ struct GoalCardView: View {
             }
         }
     }
-    // İlerleme Çubuğu
+
+    // İlerleme Çubuğu (clamp'li versiyon)
     private var progress: Double {
         let completed = Double(goal.completedSessions)
         let total = Double(goal.totalSessions)
-        return total == 0 ? 0 : completed / total
+        guard total > 0 else { return 0 }
+        return min(completed / total, 1.0)
     }
 }
 

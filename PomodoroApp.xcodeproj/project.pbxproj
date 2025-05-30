@@ -44,26 +44,8 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
-				Tests/UI/PomodoroAppUITests.swift,
-				Tests/UI/PomodoroAppUITestsLaunchTests.swift,
-				Tests/Unit/PomodoroAppTests.swift,
 			);
 			target = 0C96DB982DB2DD830009E2EF /* PomodoroApp */;
-		};
-		0C96DBEC2DB2E2990009E2EF /* Exceptions for "PomodoroApp" folder in "PomodoroAppTests" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Tests/Unit/PomodoroAppTests.swift,
-			);
-			target = 0C96DBAD2DB2DD840009E2EF /* PomodoroAppTests */;
-		};
-		0C96DBED2DB2E2A00009E2EF /* Exceptions for "PomodoroApp" folder in "PomodoroAppUITests" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Tests/UI/PomodoroAppUITests.swift,
-				Tests/UI/PomodoroAppUITestsLaunchTests.swift,
-			);
-			target = 0C96DBB72DB2DD840009E2EF /* PomodoroAppUITests */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
@@ -72,20 +54,8 @@
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				0C96DBEB2DB2E2990009E2EF /* Exceptions for "PomodoroApp" folder in "PomodoroApp" target */,
-				0C96DBEC2DB2E2990009E2EF /* Exceptions for "PomodoroApp" folder in "PomodoroAppTests" target */,
-				0C96DBED2DB2E2A00009E2EF /* Exceptions for "PomodoroApp" folder in "PomodoroAppUITests" target */,
 			);
 			path = PomodoroApp;
-			sourceTree = "<group>";
-		};
-		0C96DBB12DB2DD840009E2EF /* PomodoroAppTests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = PomodoroAppTests;
-			sourceTree = "<group>";
-		};
-		0C96DBBB2DB2DD840009E2EF /* PomodoroAppUITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = PomodoroAppUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -126,8 +96,6 @@
 			isa = PBXGroup;
 			children = (
 				0C96DB9B2DB2DD830009E2EF /* PomodoroApp */,
-				0C96DBB12DB2DD840009E2EF /* PomodoroAppTests */,
-				0C96DBBB2DB2DD840009E2EF /* PomodoroAppUITests */,
 				0C96DB9A2DB2DD830009E2EF /* Products */,
 			);
 			sourceTree = "<group>";
@@ -187,9 +155,6 @@
 			dependencies = (
 				0C96DBB02DB2DD840009E2EF /* PBXTargetDependency */,
 			);
-			fileSystemSynchronizedGroups = (
-				0C96DBB12DB2DD840009E2EF /* PomodoroAppTests */,
-			);
 			name = PomodoroAppTests;
 			packageProductDependencies = (
 			);
@@ -209,9 +174,6 @@
 			);
 			dependencies = (
 				0C96DBBA2DB2DD840009E2EF /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				0C96DBBB2DB2DD840009E2EF /* PomodoroAppUITests */,
 			);
 			name = PomodoroAppUITests;
 			packageProductDependencies = (
@@ -464,6 +426,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PomodoroApp/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Pomodak;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -496,6 +459,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PomodoroApp/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Pomodak;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

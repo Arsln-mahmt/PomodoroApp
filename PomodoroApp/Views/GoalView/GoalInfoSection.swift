@@ -15,7 +15,7 @@ struct GoalInfoSectionView: View {
     var body: some View {
         Section(header: Text("Goal Info")) {
             TextField("Title", text: $title)
-            Stepper("Daily: \(dailyMinutes) min", value: $dailyMinutes, in: 1...180, step: 5)
+            Stepper("Daily: \(dailyMinutes) min", value: $dailyMinutes, in: 5...180, step: 5)
             Stepper("Total: \(totalSessions) sessions", value: $totalSessions, in: 1...90)
         }
     }
